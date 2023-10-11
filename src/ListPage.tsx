@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FetchData } from "./fetch";
+import { FetchData } from "./utils/fetch";
 import { Typography } from "@mui/material";
 
 const ListPage = () => {
