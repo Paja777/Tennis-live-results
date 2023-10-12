@@ -1,26 +1,30 @@
-import { Box, Slide, Stack, Typography } from "@mui/material";
-import CircleIcon from "@mui/icons-material/Circle";
+import { Box, Slide, Stack } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
+import TextS from "./TextS";
 
 const TextSlider = () => {
   const containerRef = useRef<HTMLElement>(null);
-  const [slider, setSlider] = useState(true);
+
   const [showSlider, setShowSlider] = useState(true);
+  const [showSlider2, setShowSlider2] = useState(false);
 
-  const handleShowSlider = () => {
+  const turnOfSlider1 = () => {
     setShowSlider(false);
+    setShowSlider2(true);
+  };
 
-    const handleSlider = () => {
-      setShowSlider(true);
-    };
-    handleSlider();
+  const turnOnSlider2 = () => {
+    setShowSlider2(false);
+    setShowSlider(true);
   };
 
   useEffect(() => {
-    const intervalId = setInterval(handleShowSlider, 8000); // 2000 milliseconds (2 seconds)
+    const intervalId = setInterval(turnOfSlider1, 13600); // 2000 milliseconds (2 seconds)
+    const interval = setInterval(turnOnSlider2, 27200); // 2000 milliseconds (2 seconds)
 
     return () => {
       clearInterval(intervalId);
+      clearInterval(interval);
     };
   }, []);
 
@@ -29,7 +33,6 @@ const TextSlider = () => {
       ref={containerRef}
       sx={{
         height: "9vh",
-        justifyContent: "end",
         backgroundColor: "rgb(179, 237, 97)",
         position: "sticky",
         top: 91,
@@ -37,24 +40,32 @@ const TextSlider = () => {
         pt: 2,
       }}
     >
-      {showSlider && (
-        <Slide
-          in={true}
-          container={containerRef.current}
-          direction="right"
-          timeout={8000}
-        >
-          <Typography
-            variant="h4"
-            fontWeight="bolder"
-            color="white"
-            sx={{ ml: "99%", mr: "-100%" }}
+      <Stack direction="row">
+        {showSlider && (
+          <Slide
+            in={true}
+            container={containerRef.current}
+            direction="right"
+            timeout={14000}
           >
-            <CircleIcon sx={{ color: "red", fontSize: "24px" }} />
-            LIVE MATCH NADAL VS DJOKOVIC
-          </Typography>
-        </Slide>
-      )}
+            <Stack direction="row" sx={{ ml: "99%", mr: "-220%" }}>
+              <TextS />
+            </Stack>
+          </Slide>
+        )}
+        {showSlider2 && (
+          <Slide
+            in={true}
+            container={containerRef.current}
+            direction="right"
+            timeout={14000}
+          >
+            <Stack direction="row" sx={{ ml: "99%", mr: "-220%" }}>
+              <TextS />
+            </Stack>
+          </Slide>
+        )}
+      </Stack>
     </Box>
   );
 };

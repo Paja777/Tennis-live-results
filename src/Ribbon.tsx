@@ -17,7 +17,7 @@ const Ribbon = ({durationTime}: Props) => {
       }}
     >
       
-      <Typography variant='h6' fontWeight="bolder" color='text.secondary' sx={{pb: 2, mt: 3, }}>Duration time:  {durationTime? durationTime : '00 : 00'} </Typography>
+      <Typography variant='h6' fontWeight="bolder" color='text.secondary' sx={{pb: 2, mt: 3, }}>Duration time:  {durationTime? durationTime : '02 : 30'} </Typography>
     </Stack>
   );
 };
