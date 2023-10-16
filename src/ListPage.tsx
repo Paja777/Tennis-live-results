@@ -3,10 +3,12 @@ import { FetchData } from "./utils/fetch";
 import { Typography } from "@mui/material";
 
 const ListPage = () => {
-  const [matches, setMatches] = useState<string[] | null>(null);
+  const [matches, setMatches] = useState<string[] | undefined>();
 
   useEffect(() => {
-    FetchData().then((data) => matchMaker(data));
+    FetchData().then((data) =>{
+      if (data) matchMaker(data);
+    } );
   }, []);
 
   const matchMaker = (data: any) => {
@@ -20,11 +22,11 @@ const ListPage = () => {
       return `Match: ${event.T1[0].Nm} vs ${event.T2[0].Nm}`;
     });
     setMatches(teams);
-
+ 
     console.log(teams);
   };
 
-  if (matches === null) return <Typography variant='h2'>...Loading</Typography>
+  if (matches === undefined) return <Typography variant='h2'>...Loading</Typography>
 
   
 

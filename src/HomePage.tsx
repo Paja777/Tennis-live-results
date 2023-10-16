@@ -56,9 +56,7 @@ const HomePage = () => {
   //     p2sum: p1sum: parseInt(data[0].Events[0].Tr2S1 || 0) + parseInt(data[0].Events[0].Tr2S2 || 0) + parseInt(data[0].Events[0].Tr2S3 || 0);
   //   });
 
-  //   const name1: string = data[0].Events[0].T1[0].Nm;
-  //   const name2: string = data[0].Events[0].T2[0].Nm;
-  //   setPlayerName({ player1: name1, player2: name2 });
+  //   setPlayerName({ player1:  data[0].Events[0].T1[0].Nm, player2: data[0].Events[0].T2[0].Nm });
 
   //   const time: string = data[0].Events[0].Esd.toString();
   //   const timeFormated: string = parseTimestamp(time);
