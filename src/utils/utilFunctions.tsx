@@ -6,13 +6,21 @@ export function parseTimestamp(timestamp: string): string {
   const minutesInput = parseInt(timestamp.substring(10, 12), 10);
   const secondsInput = parseInt(timestamp.substring(12, 14), 10);
 
-  const timestampDate = new Date(year, month, day, hour, minutesInput, secondsInput);
+  const timestampDate = new Date(
+    year,
+    month,
+    day,
+    hour,
+    minutesInput,
+    secondsInput
+  );
   const now = new Date();
-  
 
   // Calculate the duration in seconds
-  const durationInSeconds = Math.floor((now.getTime() - timestampDate.getTime()) / 1000);
-  console.log(now.getTime());
+  const durationInSeconds = Math.floor(
+    (now.getTime() - timestampDate.getTime()) / 1000
+  );
+
   // Calculate hours, minutes, and seconds
   const hours = Math.floor(durationInSeconds / 3600);
   const remainingSeconds = durationInSeconds % 3600;
@@ -20,7 +28,9 @@ export function parseTimestamp(timestamp: string): string {
   const seconds = remainingSeconds % 60;
 
   // Format the duration as "HH:MM:SS"
-  const formattedDuration = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  const formattedDuration = `${String(hours).padStart(2, "0")}:${String(
+    minutes
+  ).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 
   return formattedDuration;
 }

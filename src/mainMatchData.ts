@@ -1,5 +1,5 @@
 export interface MainMatchData {
-  onServe: any;
+  onServe: number;
   points: {
     player1: any;
     player2: any;
@@ -7,10 +7,10 @@ export interface MainMatchData {
   finishedSets: {
     p1s1: any;
     p2s1: any;
-    p1s2: any ;
-    p2s2: any ;
-    p1s3: any ;
-    p2s3: any ;
+    p1s2?: any;
+    p2s2?: any;
+    p1s3?: any;
+    p2s3?: any;
     p1sum: number;
     p2sum: number;
   };
@@ -19,6 +19,6 @@ export interface MainMatchData {
     player2: any;
   };
   duration: string;
-  image?: any;
+  image?: { player1: string; };
   rank?: { player1: any; player2: any };
 }

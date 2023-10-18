@@ -11,32 +11,14 @@ import avatar from "../src/assets/avatar.jpg";
 import ball from "../src/assets/ball.jpg";
 import Novak from "../src/assets/Novak.webp";
 import Nadal from "../src/assets/nadal.png";
+import { useAppSelector } from "./store/configureStore";
 
-interface Props {
-  playerImage: string | undefined;
-  playerName:{ player1: string,  player2: string} | undefined;
-  rank: {player1: number, player2: number} | undefined;
-  onServe: number | undefined;
-  points: {player1: string, player2: string} | undefined;
-  finishedSets: {
-    p1s1: string;
-    p2s1: string;
-    p1s2: string | undefined,
-    p2s2: string | undefined,
-    p1s3: string | undefined,
-    p2s3: string | undefined,
-    p1sum: string | undefined,
-    p2sum: string | undefined,
-  } | undefined;
-}
-const MainMatch = ({ playerImage, playerName, rank, onServe, points, finishedSets }: Props) => {
-  // const rankBoxLeftStyle = {
-  //   ml: 13,
-  //   my: "40%",
-  //   mt: "50%",
-  //   mr: "10%",
-  //   color: "text.secondary",
-  // };
+
+
+const MainMatch = () => {
+  
+  const data = useAppSelector(state => state.mainMatch);
+  
   return (
     <Stack direction="row" > 
       <Box sx={{ width: 220, maxHeight: 450 }}>
@@ -46,12 +28,12 @@ const MainMatch = ({ playerImage, playerName, rank, onServe, points, finishedSet
           sx={{
             ml: 13,
             my: "40%",
-            mt: "50%",
+            mt: "50%", 
             mr: "10%",
             color: "text.secondary",
           }}
         >
-          {rank? `player rank: ${rank.player1}` : 'player rank: 1'}
+          {data?.rank? `player rank: ${data?.rank.player1}` : 'player rank: 1'}
         </Typography>
       </Box>
 
@@ -65,7 +47,7 @@ const MainMatch = ({ playerImage, playerName, rank, onServe, points, finishedSet
               backgroundSize: "contain",
               bgcolor: "primary.light",
             }}
-            src={playerImage ? playerImage : Novak}
+            src={data?.image ? data.image.player1 : Novak}
             alt="player"
           />
           <CardContent>
@@ -74,7 +56,7 @@ const MainMatch = ({ playerImage, playerName, rank, onServe, points, finishedSet
               color="text.secondary"
               sx={{ ml: "30%" }}
             >
-              {playerName? playerName.player1 : 'Novak Djokovic'}
+              {data? data.name.player1 : 'Novak Djokovic'}
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -82,7 +64,7 @@ const MainMatch = ({ playerImage, playerName, rank, onServe, points, finishedSet
 
       <Box sx={{ width: 250, maxHeight: 450, borderRight: '1px solid grey' }}>
         <Stack direction="row" sx={{ mt: "40%", ml: "15%" }}>
-          {onServe === 1 && <CardMedia
+          {data?.onServe === 1 && <CardMedia
             component="img"
             sx={{
               height: 35,
@@ -95,7 +77,7 @@ const MainMatch = ({ playerImage, playerName, rank, onServe, points, finishedSet
             image={ball}
           />}
           <Typography variant="h1" sx={{ color: "rgb(39, 96, 219)", mr:2, justifyContent:'center' }}>
-            {points? points.player1 : '40'}
+            {data?.points? data.points.player1 : '40'}
           </Typography>
         </Stack>
         <Typography
@@ -107,7 +89,7 @@ const MainMatch = ({ playerImage, playerName, rank, onServe, points, finishedSet
             color: "rgb(23, 70, 219)",
           }}
         >
-          {finishedSets? finishedSets.p1sum : '2'}
+          {data? data.finishedSets.p1sum : '2'}
         </Typography>
       </Box>
 
@@ -116,9 +98,9 @@ const MainMatch = ({ playerImage, playerName, rank, onServe, points, finishedSet
       <Box sx={{ width: 250, maxHeight: 450 }}>
         <Stack direction="row" sx={{ mt: "40%", ml: "20%" }}>
           <Typography variant="h1" sx={{ color: "rgb(39, 96, 219)" }}>
-            {points? points.player1 : '0'}
+            {data? data.points.player1 : '0'}
           </Typography>
-          {onServe === 2 && <CardMedia
+          {data?.onServe === 2 && <CardMedia
             component="img"
             sx={{
               height: 35,
@@ -141,7 +123,7 @@ const MainMatch = ({ playerImage, playerName, rank, onServe, points, finishedSet
             color: "rgb(23, 70, 219)",
           }}
         >
-          {finishedSets? finishedSets.p2sum : '0'}
+          {data? data.finishedSets.p2sum : '0'}
         </Typography>
       </Box>
 
@@ -155,7 +137,7 @@ const MainMatch = ({ playerImage, playerName, rank, onServe, points, finishedSet
               backgroundSize: "contain",
               bgcolor: "primary.light",
             }}
-            src={playerImage ? playerImage : Nadal}
+            src={data?.image ? data.image.player1 : Nadal}
             alt="player"
           />
           <CardContent>
@@ -164,7 +146,7 @@ const MainMatch = ({ playerImage, playerName, rank, onServe, points, finishedSet
               color="text.secondary"
               sx={{ ml: "30%" }}
             >
-              {"Rafael Nadal"}
+              {data? data.name.player2 : "Rafael Nadal"}
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -182,7 +164,7 @@ const MainMatch = ({ playerImage, playerName, rank, onServe, points, finishedSet
             color: "text.secondary",
           }}
         >
-          {rank? `player rank: ${rank.player2}` : 'player rank: 123'}
+          {data?.rank? `player rank: ${data.rank?.player2}` : 'player rank: 123'}
         </Typography>
       </Box>
     </Stack>

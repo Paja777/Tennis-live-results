@@ -1,11 +1,10 @@
 import { Stack, Typography } from "@mui/material";
+import { useAppSelector } from "./store/configureStore";
 
 
-interface Props{
-    durationTime: string | undefined;
-}
 
-const Ribbon = ({durationTime}: Props) => {
+const Ribbon = () => {
+  const {duration} = useAppSelector(state => state.mainMatch)
   return (
     <Stack
       direction="row"
@@ -17,7 +16,7 @@ const Ribbon = ({durationTime}: Props) => {
       }}
     >
       
-      <Typography variant='h6' fontWeight="bolder" color='text.secondary' sx={{pb: 2, mt: 3, }}>Duration time:  {durationTime? durationTime : '02 : 30'} </Typography>
+      <Typography variant='h6' fontWeight="bolder" color='text.secondary' sx={{pb: 2, mt: 3, }}>Duration time:  {duration? duration : '02 : 30'} </Typography>
     </Stack>
   );
 };
