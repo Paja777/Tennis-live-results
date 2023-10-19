@@ -16,7 +16,7 @@ const HomePage = () => {
   const dataExctractor = (data: any) => {
     const onServe: number = data[0].Events[0].Esrv;
     console.log(onServe);
-    
+
     const points = {
       player1: data[0].Events[0].Tr1G,
       player2: data[0].Events[0].Tr2G,
@@ -25,19 +25,13 @@ const HomePage = () => {
 
     const finishedSets = {
       p1s1: data[0].Events[0].Tr1S1 || null,
-      p2s1: data[0].Events[0].Tr1S2 || null,
-      p1s2: data[0].Events[0].Tr1S3 || null,
-      p2s2: data[0].Events[0].Tr2S1 || null,
-      p1s3: data[0].Events[0].Tr2S2 || null,
+      p2s1: data[0].Events[0].Tr2S1 || null,
+      p1s2: data[0].Events[0].Tr1S2 || null,
+      p2s2: data[0].Events[0].Tr2S2 || null,
+      p1s3: data[0].Events[0].Tr2S3 || null,
       p2s3: data[0].Events[0].Tr2S3 || null,
-      p1sum:
-        parseInt(data[0].Events[0].Tr1S1 || 0) +
-        parseInt(data[0].Events[0].Tr1S2 || 0) +
-        parseInt(data[0].Events[0].Tr1S3 || 0),
-      p2sum:
-        parseInt(data[0].Events[0].Tr2S1 || 0) +
-        parseInt(data[0].Events[0].Tr2S2 || 0) +
-        parseInt(data[0].Events[0].Tr2S3 || 0),
+      p1sum: data[0].Events[0].Tr1 || null,
+      p2sum: data[0].Events[0].Tr2 || null,
     };
 
     const name = {
@@ -57,36 +51,42 @@ const HomePage = () => {
         return player.ranking;
       }
     }
-    // const playerRank1 = playersArray.filter((player: any) =>
-    //   rankFinder(player, name?.player1)
-    // );
-    // const playerRank2 = playersArray.filter((player: any) =>
-    //   rankFinder(player, name?.player2)
-    // );
-    // const rank = {
-    //   player1: playerRank1[0].ranking,
-    //   player2: playerRank2[0].ranking,
-    // };
+    const playerRank1 = playersArray.filter((player: any) =>
+      rankFinder(player, name?.player1)
+    );
+    const playerRank2 = playersArray.filter((player: any) =>
+      rankFinder(player, name?.player2)
+    );
+    const rank = {
+      player1: playerRank1[0].ranking,
+      player2: playerRank2[0].ranking,
+    };
     dispatch(addData({ onServe, points, finishedSets, name, duration }));
   };
 
   useEffect(() => {
-    FetchData().then((data) => {
-      if (data) {
-        dataExctractor(data);
-      }
-    }).catch((error) => console.log(error));
+    FetchData()
+      .then((data) => {
+        if (data) {
+          dataExctractor(data);
+        }
+      })
+      .catch((error) => console.log(error));
+  }, [dataExctractor,]);
 
-    fetchImages().then((data) => {
-      if (data) dispatch(setImage1(data.url));
-      
-    }).catch((error) => console.log(error));
-  }, [dataExctractor, dispatch]);
+
+  useEffect(() => {
+    fetchImages()
+      .then((data) => {
+        if (data) dispatch(setImage1(data.url));
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <Stack>
       <Link
-        to="/list"
+        to="/listpage"
         style={{
           justifyContent: "center",
           height: "22vh",

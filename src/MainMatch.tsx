@@ -48,7 +48,7 @@ const MainMatch = () => {
               bgcolor: "primary.light",
             }}
             src={data?.image ? data.image.player1 : Novak}
-            alt="player"
+            alt="player1"
           />
           <CardContent>
             <Typography
@@ -93,7 +93,7 @@ const MainMatch = () => {
         </Typography>
       </Box>
 
-      {/* Ovde pocinje desna kartica */}
+      {/* second player card from here */}
 
       <Box sx={{ width: 250, maxHeight: 450 }}>
         <Stack direction="row" sx={{ mt: "40%", ml: "20%" }}>
@@ -138,7 +138,7 @@ const MainMatch = () => {
               bgcolor: "primary.light",
             }}
             src={data?.image ? data.image.player1 : Nadal}
-            alt="player"
+            alt="player2"
           />
           <CardContent>
             <Typography

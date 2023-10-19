@@ -1,7 +1,7 @@
 import axios, { Method } from "axios";
 
 const apiKey = process.env.REACT_APP_API_KEY;
-// const apiKey = '';
+
 
 //Fetching live matches
 
@@ -13,7 +13,7 @@ const options = {
     Timezone: '1'
   },
   headers: {
-    'X-RapidAPI-Key': '95f8eb4e03msh1cbfb4cb32ce074p12d535jsn9414e964f137',
+    'X-RapidAPI-Key': apiKey? '' : '',
     'X-RapidAPI-Host': 'livescore6.p.rapidapi.com'
   }
 };
@@ -32,25 +32,23 @@ export const FetchData = async () => {
 //Fetching player images
 
 const encodedParams = new URLSearchParams();
-encodedParams.set("text", "Thanasi Kokkinakis tennis player");
+encodedParams.set("text", "Novak Djokovic tennis player");
 
 const options1 = {
   method: "POST" as Method,
   url: "https://open-ai21.p.rapidapi.com/texttoimage2",
   headers: {
     "content-type": "application/x-www-form-urlencoded",
-    "X-RapidAPI-Key": apiKey ? apiKey : "",
+    "X-RapidAPI-Key": "",
     "X-RapidAPI-Host": "open-ai21.p.rapidapi.com",
   },
   data: encodedParams,
 };
 
 export const fetchImages = async () => {
-  try {
+  
     const response = await axios.request(options1);
     console.log(response.data);
     return response.data;
-  } catch (error) {
-    console.error(error);
-  }
+  
 };

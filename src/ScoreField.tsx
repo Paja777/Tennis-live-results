@@ -46,10 +46,10 @@ const ScoreField = () => {
         divider={<Divider orientation="horizontal" />}
       >
         <Typography variant="h5" sx={{ px: 1, py: 1 }}>
-          {finishedSets ? finishedSets.p1s2 : "0"}
+          {finishedSets.p1s2 ? finishedSets.p1s2 : "0"}
         </Typography>
         <Typography variant="h5" sx={{ px: 5, py: 1 }}>
-          {finishedSets ? finishedSets.p2s2 : "0"}
+          {finishedSets.p2s2 ? finishedSets.p2s2 : "0"}
         </Typography>
       </Stack>
       <Stack

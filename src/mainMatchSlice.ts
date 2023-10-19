@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { MainMatchData } from "./mainMatchData";
 
 interface mainMatchState {
   onServe: number;
@@ -22,19 +21,19 @@ interface mainMatchState {
     player2: any;
   };
   duration: string;
-  image?: { player1: string };
+  image?: { player1: string;  player2: string; };
   rank?: { player1: any; player2: any };
 }
 
 const initialState: mainMatchState = {
-  onServe: 0, // Default value for onServe
+  onServe: 1, // Default value for onServe
   points: {
-    player1: null,
-    player2: null,
+    player1: 0,
+    player2: 0,
   },
   finishedSets: {
-    p1s1: null,
-    p2s1: null,
+    p1s1: 0,
+    p2s1: 0,
     p1s2: null,
     p2s2: null,
     p1s3: null,
@@ -43,16 +42,17 @@ const initialState: mainMatchState = {
     p2sum: 0, // Default value for p2sum
   },
   name: {
-    player1: null,
-    player2: null,
+    player1: 'Player 1',
+    player2: 'Player 2',
   },
   duration: "", // Default value for duration
   image: {
-    player1: "", // Default value for player1 in the image object
+    player1: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgRXu0dxIvbb63TkywEE7hYpH22vbV5woEGg&usqp=CAU", // Default value for player1 in the image object
+    player2: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgRXu0dxIvbb63TkywEE7hYpH22vbV5woEGg&usqp=CAU", // Default value for player1 in the image object
   },
   rank: {
-    player1: null,
-    player2: null,
+    player1: '',
+    player2: '',
   },
 };
 
@@ -65,11 +65,6 @@ export const mainMatchSlice = createSlice({
         state.image.player1 = action.payload;
       }
     },
-    // addOnServe: (state, action) => {
-    //   if (state.onServe) {
-    //     state.onServe = action.payload;
-    //   }
-    // },
 
     addData: (state, { payload }) => {
         state.finishedSets = payload.finishedSets;
