@@ -1,10 +1,11 @@
 import { Box, Slide, Stack } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import TextS from "./TextS";
+import { useAppSelector } from "./store/configureStore";
 
 const TextSlider = () => {
   const containerRef = useRef<HTMLElement>(null);
-
+  const {textSliderColor} = useAppSelector(state => state.mainMatch);
   const [showSlider, setShowSlider] = useState(true);
   const [showSlider2, setShowSlider2] = useState(false);
 
@@ -32,8 +33,8 @@ const TextSlider = () => {
     <Box
       ref={containerRef}
       sx={{
-        height: "9vh",
-        backgroundColor: "rgb(179, 237, 97)",
+        height: "8vh",
+        backgroundColor: textSliderColor,
         position: "sticky",
         top: 91,
         zIndex: 124,

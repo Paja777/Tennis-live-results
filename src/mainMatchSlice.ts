@@ -23,6 +23,8 @@ interface mainMatchState {
   duration: string;
   image?: { player1: string;  player2: string; };
   rank?: { player1: any; player2: any };
+  textSliderColor: string;
+  userLoggedIn: boolean;
 }
 
 const initialState: mainMatchState = {
@@ -54,6 +56,8 @@ const initialState: mainMatchState = {
     player1: '',
     player2: '',
   },
+  textSliderColor: "rgb(179, 237, 97)",
+  userLoggedIn: false
 };
 
 export const mainMatchSlice = createSlice({
@@ -74,7 +78,10 @@ export const mainMatchSlice = createSlice({
         state.points = payload.points;
         state.onServe = payload.onServe;
       },
+      changeTextSliderColor: (state, action) => {
+        state.textSliderColor = action.payload;
+      }
   },
 });
 
-export const { setImage1, addData } = mainMatchSlice.actions;
+export const { setImage1, addData, changeTextSliderColor } = mainMatchSlice.actions;

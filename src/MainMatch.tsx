@@ -12,14 +12,17 @@ import ball from "../src/assets/ball.jpg";
 import Novak from "../src/assets/Novak.webp";
 import Nadal from "../src/assets/nadal.png";
 import { useAppSelector } from "./store/configureStore";
+import ScoreField from "./ScoreField";
 
 
 
 const MainMatch = () => {
   
-  const data = useAppSelector(state => state.mainMatch);
+  const allData = useAppSelector(state => state.mainMatch);
+  const data = allData.userLoggedIn ? allData : null;
   
   return (
+    <>
     <Stack direction="row" > 
       <Box sx={{ width: 220, maxHeight: 450 }}>
         <Typography
@@ -168,6 +171,8 @@ const MainMatch = () => {
         </Typography>
       </Box>
     </Stack>
+    <ScoreField />
+    </>
   );
 };
 

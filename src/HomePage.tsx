@@ -7,12 +7,15 @@ import { playersArray } from "./playersArray";
 import Ribbon from "./Ribbon";
 import MainMatch from "./MainMatch";
 import ScoreField from "./ScoreField";
-import { useAppDispatch } from "./store/configureStore";
-import { addData, setImage1 } from "./mainMatchSlice";
+import { useAppDispatch, useAppSelector } from "./store/configureStore";
+import { addData, changeTextSliderColor, setImage1 } from "./mainMatchSlice";
+import Footer from "./Footer";
+import Modal from "./Modal";
 
 const HomePage = () => {
+  const {userLoggedIn} = useAppSelector(state => state.mainMatch);
   const dispatch = useAppDispatch();
-
+  dispatch(changeTextSliderColor("rgb(179, 237, 97)"));
   const dataExctractor = (data: any) => {
     const onServe: number = data[0].Events[0].Esrv;
     console.log(onServe);
@@ -72,8 +75,7 @@ const HomePage = () => {
         }
       })
       .catch((error) => console.log(error));
-  }, [dataExctractor,]);
-
+  }, [dataExctractor]);
 
   useEffect(() => {
     fetchImages()
@@ -84,24 +86,28 @@ const HomePage = () => {
   }, []);
 
   return (
-    <Stack>
-      <Link
-        to="/listpage"
-        style={{
-          justifyContent: "center",
-          height: "22vh",
-          textDecoration: "none",
-        }}
-      >
-        <Typography
-          variant="h4"
-          sx={{ ml: "37%", mt: 6 }}
-        >{`>>All Live Matches List`}</Typography>
-      </Link>
-      <Ribbon />
-      <MainMatch />
-      <ScoreField />
-    </Stack>
+    <>
+      <Modal />
+      <Stack>
+
+        { userLoggedIn && <Link
+          to="/listpage"
+          style={{
+            justifyContent: "center",
+            height: "22vh",
+            textDecoration: "none",
+          }}
+        >
+          <Typography
+            variant="h4"
+            sx={{ ml: "37%", mt: 6 }}
+          >{`>>All Live Matches List`}</Typography>
+        </Link>}
+        <Ribbon />
+        <MainMatch />
+      </Stack>
+      <Footer />
+    </>
   );
 };
 

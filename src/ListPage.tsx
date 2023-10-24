@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { FetchData } from "./utils/fetch";
-import { Box, Typography } from "@mui/material";
+import { Box, Divider, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import ListItem from "./ListItem";
-import background from '../src/assets/background.png';
+import back2 from "../src/assets/back2.png";
+import { useAppDispatch, useAppSelector } from "./store/configureStore";
+import { changeTextSliderColor } from "./mainMatchSlice";
+import Footer from "./Footer";
 
 const dummy_matches = [
   {
@@ -11,39 +14,42 @@ const dummy_matches = [
     stage: "Roland Garros",
     player1: "Novak Djokovic",
     player2: "Rafael Nadal",
-    sets: "2:1",
+    sets: "2 : 1",
   },
   {
     id: 2,
     stage: "Wimbledon",
     player1: "Roger Federer",
     player2: "Andy Murray",
-    sets: "3:0",
+    sets: "3 : 0",
   },
   {
     id: 3,
     stage: "Australian Open",
     player1: "Serena Williams",
     player2: "Maria Sharapova",
-    sets: "2:1",
+    sets: "2 : 1",
   },
   {
     id: 4,
     stage: "French Open",
     player1: "Rafael Nadal",
     player2: "Dominic Thiem",
-    sets: "3:2",
+    sets: "3 : 2",
   },
   {
     id: 5,
     stage: "US Open",
     player1: "Naomi Osaka",
     player2: "Ashleigh Barty",
-    sets: "2:0",
+    sets: "2 : 0",
   },
 ];
 
 const ListPage = () => {
+  const dispatch = useAppDispatch();
+  dispatch(changeTextSliderColor("blue"));
+
   const [matches, setMatches] = useState<
     | {
         id: number;
@@ -82,24 +88,28 @@ const ListPage = () => {
     return <Typography variant="h2">...Loading</Typography>;
 
   return (
-    <Box
-      sx={{
-        justifyItems: "center", 
-        backgroundImage: `url("${background}")`,
-        backgroundAttachment: 'fixed'
-      }}
-    >
-      {matches?.map((match) => (
-        <Link to="/" style={{ textDecoration: "none" }}>
+    <>
+      <Box
+        sx={{
+          mt: -3,
+          py: 4,
+          justifyItems: "center",
+          backgroundImage: `url("${back2}")`,
+          backgroundAttachment: "fixed",
+          backgroundSize: "cover",
+        }}
+      >
+        {matches?.map((match) => (
           <ListItem
             stage={match.stage}
             player1={match.player1}
             sets={match.sets}
             player2={match.player2}
           />
-        </Link>
-      ))}
-    </Box>
+        ))}
+      </Box>
+      <Footer />
+    </>
   );
 };
 
