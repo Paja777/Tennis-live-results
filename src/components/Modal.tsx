@@ -7,13 +7,13 @@ import { useNavigate } from 'react-router';
 
 const Backdrop = () =>{
     return <div className={classes.backdrop} ></div>
-};
+}; 
 
 const ModalOverlay = () =>{
     const navigate = useNavigate();
     return <div className={classes.modal}>
         <LoadingButton
-          onClick={() => navigate('/account')}
+          onClick={() => navigate('/logreg')}
           
           fullWidth
           variant="contained"
@@ -21,6 +21,7 @@ const ModalOverlay = () =>{
         >
           Watch List of all Live Matches
         </LoadingButton>
+
     </div>
 };
 const portalElement = document.getElementById('overlays');

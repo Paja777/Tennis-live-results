@@ -27,10 +27,10 @@ const ScoreField = () => {
         divider={<Divider orientation="horizontal" />}
       >
         <Typography variant="h5" sx={{ px: 1, py: 1 }}>
-          {finishedSets ? finishedSets.p1s1 : "0"}
+          {finishedSets ? finishedSets.p1s1 : "6"}
         </Typography>
         <Typography variant="h5" sx={{ px: 5, py: 1 }}>
-          {finishedSets ? finishedSets.p2s1 : "0"}
+          {finishedSets ? finishedSets.p2s1 : "4"}
         </Typography>
       </Stack>
       <Stack
@@ -46,10 +46,10 @@ const ScoreField = () => {
         divider={<Divider orientation="horizontal" />}
       >
         <Typography variant="h5" sx={{ px: 1, py: 1 }}>
-          {finishedSets.p1s2 ? finishedSets.p1s2 : "0"}
+          {finishedSets && finishedSets.p1s2 ? finishedSets.p1s2 : "6"}
         </Typography>
         <Typography variant="h5" sx={{ px: 5, py: 1 }}>
-          {finishedSets.p2s2 ? finishedSets.p2s2 : "0"}
+          {finishedSets && finishedSets.p2s2 ? finishedSets.p2s2 : "4"}
         </Typography>
       </Stack>
       <Stack
@@ -64,10 +64,10 @@ const ScoreField = () => {
         divider={<Divider orientation="horizontal" />}
       >
         <Typography variant="h5" sx={{ px: 1, py: 1 }}>
-          {finishedSets.p1s3 ? finishedSets.p1s3 : "0"}
+          {finishedSets && finishedSets.p1s3 ? finishedSets.p1s3 : "0"}
         </Typography>
         <Typography variant="h5" sx={{ px: 5, py: 1 }}>
-          {finishedSets.p2s3 ? finishedSets.p2s3 : "0"}
+          {finishedSets && finishedSets.p2s3 ? finishedSets.p2s3 : "0"}
         </Typography>
       </Stack>
     </Stack>

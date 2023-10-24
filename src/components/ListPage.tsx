@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { FetchData } from "./utils/fetch";
+import { FetchData } from "../utils/fetch";
 import { Box, Divider, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import ListItem from "./components/ListItem";
-import back2 from "../src/assets/back2.png";
-import { useAppDispatch, useAppSelector } from "./store/configureStore";
-import { changeTextSliderColor } from "./features/mainMatch/mainMatchSlice";
-import Footer from "./layout/Footer";
+import ListItem from "./ListItem";
+import back2 from "../assets/back2.png";
+import { useAppDispatch, useAppSelector } from "../store/configureStore";
+import { changeTextSliderColor } from "../features/mainMatch/mainMatchSlice";
+import Footer from "../layout/Footer";
 
 const dummy_matches = [
   {

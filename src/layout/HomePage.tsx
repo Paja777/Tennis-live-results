@@ -8,12 +8,16 @@ import Ribbon from "../components/Ribbon";
 import MainMatch from "../features/mainMatch/MainMatch";
 import ScoreField from "../components/ScoreField";
 import { useAppDispatch, useAppSelector } from "../store/configureStore";
-import { addData, changeTextSliderColor, setImage1 } from "../features/mainMatch/mainMatchSlice";
+import {
+  addData,
+  changeTextSliderColor,
+  setImage1,
+} from "../features/mainMatch/mainMatchSlice";
 import Footer from "./Footer";
 import Modal from "../components/Modal";
 
 const HomePage = () => {
-  const {userLoggedIn} = useAppSelector(state => state.mainMatch);
+  const { userLoggedIn } = useAppSelector((state) => state.account);
   const dispatch = useAppDispatch();
   dispatch(changeTextSliderColor("rgb(179, 237, 97)"));
   const dataExctractor = (data: any) => {
@@ -87,22 +91,23 @@ const HomePage = () => {
 
   return (
     <>
-      <Modal />
+      {!userLoggedIn && <Modal />}
       <Stack>
-
-        { userLoggedIn && <Link
-          to="/listpage"
-          style={{
-            justifyContent: "center",
-            height: "22vh",
-            textDecoration: "none",
-          }}
-        >
-          <Typography
-            variant="h4"
-            sx={{ ml: "37%", mt: 6 }}
-          >{`>>All Live Matches List`}</Typography>
-        </Link>}
+        {userLoggedIn && (
+          <Link
+            to="/listpage"
+            style={{
+              justifyContent: "center",
+              height: "22vh",
+              textDecoration: "none",
+            }}
+          >
+            <Typography
+              variant="h4"
+              sx={{ ml: "37%", mt: 6 }}
+            >{`>>All Live Matches List`}</Typography>
+          </Link>
+        )}
         <Ribbon />
         <MainMatch />
       </Stack>

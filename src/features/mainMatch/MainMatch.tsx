@@ -8,9 +8,9 @@ import {
   Typography,
 } from "@mui/material";
 import avatar from "../src/assets/avatar.jpg";
-import ball from "../src/assets/ball.jpg";
-import Novak from "../src/assets/Novak.webp";
-import Nadal from "../src/assets/nadal.png";
+import ball from "../../assets/ball.jpg";
+import Novak from "../../assets/Novak.webp";
+import Nadal from "../../assets/nadal.png";
 import { useAppSelector } from "../../store/configureStore";
 import ScoreField from "../../components/ScoreField";
 
@@ -19,7 +19,8 @@ import ScoreField from "../../components/ScoreField";
 const MainMatch = () => {
   
   const allData = useAppSelector(state => state.mainMatch);
-  const data = allData.userLoggedIn ? allData : null;
+  const {userLoggedIn} = useAppSelector(state => state.account);
+  const data = userLoggedIn ? allData : null;
   
   return (
     <>

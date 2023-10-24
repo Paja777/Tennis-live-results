@@ -1,5 +1,7 @@
 import { Box, Card, Container, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "../store/configureStore";
+import { addData } from "../features/mainMatch/mainMatchSlice";
 interface Props {
   player1: string;
   player2: string;
@@ -7,6 +9,8 @@ interface Props {
   stage: string;
 }
 const ListItem = ({ player1, player2, stage, sets }: Props) => {
+  const dispatch = useAppDispatch();
+  const name = {player1, player2};
   return (
     <Container
       component={Card}
@@ -20,7 +24,7 @@ const ListItem = ({ player1, player2, stage, sets }: Props) => {
         ml: "15%",
       }}
     >
-      <Link to="/" style={{ textDecoration: "none", width: "70%" }}>
+      <Link to="/" onClick={() => dispatch(addData({stage, name}))} style={{ textDecoration: "none", width: "70%" }}>
         <Stack direction="row" sx={{ mt: 3 }}>
           <Box sx={{}}>
             <img

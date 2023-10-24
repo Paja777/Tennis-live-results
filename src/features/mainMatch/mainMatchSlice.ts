@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface mainMatchState {
+  stage: string;
   onServe: number;
   points: {
     player1: any;
@@ -21,13 +22,14 @@ interface mainMatchState {
     player2: any;
   };
   duration: string;
-  image?: { player1: string;  player2: string; };
+  image?: { player1: string; player2: string };
   rank?: { player1: any; player2: any };
   textSliderColor: string;
   userLoggedIn: boolean;
 }
 
 const initialState: mainMatchState = {
+  stage: "",
   onServe: 1, // Default value for onServe
   points: {
     player1: 0,
@@ -44,20 +46,22 @@ const initialState: mainMatchState = {
     p2sum: 0, // Default value for p2sum
   },
   name: {
-    player1: 'Player 1',
-    player2: 'Player 2',
+    player1: "Player 1",
+    player2: "Player 2",
   },
   duration: "", // Default value for duration
   image: {
-    player1: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgRXu0dxIvbb63TkywEE7hYpH22vbV5woEGg&usqp=CAU", // Default value for player1 in the image object
-    player2: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgRXu0dxIvbb63TkywEE7hYpH22vbV5woEGg&usqp=CAU", // Default value for player1 in the image object
+    player1:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgRXu0dxIvbb63TkywEE7hYpH22vbV5woEGg&usqp=CAU", // Default value for player1 in the image object
+    player2:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgRXu0dxIvbb63TkywEE7hYpH22vbV5woEGg&usqp=CAU", // Default value for player1 in the image object
   },
   rank: {
-    player1: '',
-    player2: '',
+    player1: "",
+    player2: "",
   },
   textSliderColor: "rgb(179, 237, 97)",
-  userLoggedIn: false
+  userLoggedIn: false,
 };
 
 export const mainMatchSlice = createSlice({
@@ -65,23 +69,24 @@ export const mainMatchSlice = createSlice({
   initialState,
   reducers: {
     setImage1: (state, action) => {
-      if ( state.image) {
+      if (state.image) {
         state.image.player1 = action.payload;
       }
     },
 
     addData: (state, { payload }) => {
-        state.finishedSets = payload.finishedSets;
-        state.name = payload.name;
-        state.duration = payload.duration;
-        state.rank = payload.rank;
-        state.points = payload.points;
-        state.onServe = payload.onServe;
-      },
-      changeTextSliderColor: (state, action) => {
-        state.textSliderColor = action.payload;
-      }
+      state.finishedSets = payload.finishedSets;
+      state.name = payload.name;
+      state.duration = payload.duration;
+      state.rank = payload.rank;
+      state.points = payload.points;
+      state.onServe = payload.onServe;
+    },
+    changeTextSliderColor: (state, action) => {
+      state.textSliderColor = action.payload;
+    },
   },
 });
 
-export const { setImage1, addData, changeTextSliderColor } = mainMatchSlice.actions;
+export const { setImage1, addData, changeTextSliderColor } =
+  mainMatchSlice.actions;
