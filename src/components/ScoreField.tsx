@@ -1,5 +1,5 @@
 import { Divider, Stack, Typography } from "@mui/material";
-import { useAppSelector } from "./store/configureStore";
+import { useAppSelector } from "../store/configureStore";
 
 const ScoreField = () => {
   const { finishedSets } = useAppSelector((state) => state.mainMatch);

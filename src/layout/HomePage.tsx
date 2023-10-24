@@ -1,16 +1,16 @@
 import { Stack, Typography } from "@mui/material";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FetchData, fetchImages } from "./utils/fetch";
-import { parseTimestamp } from "./utils/utilFunctions";
-import { playersArray } from "./playersArray";
-import Ribbon from "./Ribbon";
-import MainMatch from "./MainMatch";
-import ScoreField from "./ScoreField";
-import { useAppDispatch, useAppSelector } from "./store/configureStore";
-import { addData, changeTextSliderColor, setImage1 } from "./mainMatchSlice";
+import { FetchData, fetchImages } from "../utils/fetch";
+import { parseTimestamp } from "../utils/utilFunctions";
+import { playersArray } from "../utils/playersArray";
+import Ribbon from "../components/Ribbon";
+import MainMatch from "../features/mainMatch/MainMatch";
+import ScoreField from "../components/ScoreField";
+import { useAppDispatch, useAppSelector } from "../store/configureStore";
+import { addData, changeTextSliderColor, setImage1 } from "../features/mainMatch/mainMatchSlice";
 import Footer from "./Footer";
-import Modal from "./Modal";
+import Modal from "../components/Modal";
 
 const HomePage = () => {
   const {userLoggedIn} = useAppSelector(state => state.mainMatch);

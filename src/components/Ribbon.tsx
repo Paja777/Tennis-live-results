@@ -1,5 +1,5 @@
 import { Stack, Typography } from "@mui/material";
-import { useAppSelector } from "./store/configureStore";
+import { useAppSelector } from "../store/configureStore";
 
 
 

@@ -11,8 +11,8 @@ import avatar from "../src/assets/avatar.jpg";
 import ball from "../src/assets/ball.jpg";
 import Novak from "../src/assets/Novak.webp";
 import Nadal from "../src/assets/nadal.png";
-import { useAppSelector } from "./store/configureStore";
-import ScoreField from "./ScoreField";
+import { useAppSelector } from "../../store/configureStore";
+import ScoreField from "../../components/ScoreField";
 
 
 

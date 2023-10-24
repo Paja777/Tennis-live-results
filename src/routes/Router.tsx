@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import ListPage from "../ListPage";
-import LogRegPage from "../LogRegPage";
+import LogRegPage from "../features/account/LogRegPage";
 import App from "../App";
-import HomePage from "../HomePage";
-import AccountPage from "../AccountPage";
+import HomePage from "../layout/HomePage";
+import AccountPage from "../features/account/AccountPage";
 import MainMatchPage from "../MainMatchPage";
 import { ListItem } from "@mui/material";
 

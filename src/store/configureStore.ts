@@ -1,6 +1,6 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import { mainMatchSlice } from "../mainMatchSlice";
+import { mainMatchSlice } from "../features/mainMatch/mainMatchSlice";
 
 export const store = configureStore({
     reducer: {
