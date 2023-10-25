@@ -13,7 +13,7 @@ const options = {
     Timezone: '1'
   },
   headers: {
-    'X-RapidAPI-Key': apiKey? '' : '',
+    'X-RapidAPI-Key':apiKey? apiKey : '',
     'X-RapidAPI-Host': 'livescore6.p.rapidapi.com'
   }
 };
@@ -39,7 +39,7 @@ const options1 = {
   url: "https://open-ai21.p.rapidapi.com/texttoimage2",
   headers: {
     "content-type": "application/x-www-form-urlencoded",
-    "X-RapidAPI-Key": "",
+    "X-RapidAPI-Key": apiKey? apiKey : '',
     "X-RapidAPI-Host": "open-ai21.p.rapidapi.com",
   },
   data: encodedParams,

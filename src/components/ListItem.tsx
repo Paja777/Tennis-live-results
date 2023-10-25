@@ -1,7 +1,7 @@
 import { Box, Card, Container, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../store/configureStore";
-import { addData } from "../features/mainMatch/mainMatchSlice";
+import { addData, matchFinder } from "../features/mainMatch/mainMatchSlice";
 interface Props {
   player1: string;
   player2: string;
@@ -17,14 +17,14 @@ const ListItem = ({ player1, player2, stage, sets }: Props) => {
       sx={{
         height: "20vh",
         backgroundColor: "white",
-        opacity: 0.9,
+        opacity: 0.9, 
         justifyContent: "center",
         mt: 3,
         width: "70%",
         ml: "15%",
       }}
     >
-      <Link to="/" onClick={() => dispatch(addData({stage, name}))} style={{ textDecoration: "none", width: "70%" }}>
+      <Link to="/" onClick={() => dispatch(matchFinder({stage, name}))} style={{ textDecoration: "none", width: "70%" }}>
         <Stack direction="row" sx={{ mt: 3 }}>
           <Box sx={{}}>
             <img

@@ -7,7 +7,6 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import avatar from "../src/assets/avatar.jpg";
 import ball from "../../assets/ball.jpg";
 import Novak from "../../assets/Novak.webp";
 import Nadal from "../../assets/nadal.png";
@@ -21,11 +20,13 @@ const MainMatch = () => {
   const allData = useAppSelector(state => state.mainMatch);
   const {userLoggedIn} = useAppSelector(state => state.account);
   const data = userLoggedIn ? allData : null;
+
+ 
   
   return (
     <>
     <Stack direction="row" > 
-      <Box sx={{ width: 220, maxHeight: 450 }}>
+      <Box sx={{ width: 220, maxHeight: 450 }}> 
         <Typography
           variant="h6"
           fontWeight='bolder'

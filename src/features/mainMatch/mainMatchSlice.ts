@@ -37,7 +37,7 @@ const initialState: mainMatchState = {
   },
   finishedSets: {
     p1s1: 0,
-    p2s1: 0,
+    p2s1: 0, 
     p1s2: null,
     p2s2: null,
     p1s3: null,
@@ -85,8 +85,12 @@ export const mainMatchSlice = createSlice({
     changeTextSliderColor: (state, action) => {
       state.textSliderColor = action.payload;
     },
+    matchFinder: (state, {payload}) => {
+      state.stage = payload.stage;
+      state.name = payload.name;
+    }
   },
 });
 
-export const { setImage1, addData, changeTextSliderColor } =
+export const { setImage1, addData, changeTextSliderColor, matchFinder } =
   mainMatchSlice.actions;

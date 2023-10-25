@@ -10,7 +10,7 @@ import Footer from "../layout/Footer";
 
 const dummy_matches = [
   {
-    id: 1,
+    id: 1, 
     stage: "Roland Garros",
     player1: "Novak Djokovic",
     player2: "Rafael Nadal",
@@ -64,7 +64,7 @@ const ListPage = () => {
   // useEffect(() => {
   //   FetchData()
   //     .then((data) => {
-  //       if (data) matchMaker(data);
+  //       if (data) {const m = matchMaker(data); setMatches(m)} 
   //     })
   //     .catch((error) => console.log(error));
   // }, []);
@@ -72,16 +72,25 @@ const ListPage = () => {
   const matchMaker = (data: any) => {
     const events: { string: string | number }[] = data
       .map((tour: any) => {
-        return tour.Events;
+        return {matches: tour.Events, stageName: tour.Snm};
       })
-      .flat();
+      
 
-    const teams: string[] = events.map((event: any) => {
-      return `Match: ${event.T1[0].Nm} vs ${event.T2[0].Nm}`;
+    const teams = events.map((event: any) => {
+      const stageName = event.stageName;
+      event.matches.map((match: any) => {
+
+        return {
+          id: Math.random(),
+          stage: stageName,
+          player1: match.T1[0].Nm,
+          player2: match.T2[0].Nm,
+          sets: `${match.Tr1} : ${match.Tr2}`,
+        }
+      }
+      );
     });
-    // setMatches(teams);
-
-    console.log(teams);
+    return teams;
   };
 
   if (matches === undefined)
@@ -101,6 +110,7 @@ const ListPage = () => {
       >
         {matches?.map((match) => (
           <ListItem
+            key={match.player1}
             stage={match.stage}
             player1={match.player1}
             sets={match.sets}

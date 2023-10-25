@@ -26,7 +26,7 @@ export default function DropDown({name}: any) {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
-        sx={{mt:0, ml:0}}
+        sx={{mt:0, ml:0, color: 'purple'}}
       >
         {name}
       </Button>
